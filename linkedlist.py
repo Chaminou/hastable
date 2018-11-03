@@ -173,16 +173,4 @@ class LinkedList :
 
 
 if __name__ == '__main__' :
-	liste = LinkedList()
-	a = Element("a", 1)
-	b = Element("b", 2)
-	c = Element("c", 3)
-	d = Element("d", 4)
-
-	liste.add_to_head(a)
-	liste.add_to_tail(b)
-	liste.add_to_tail(c)
-	liste.insert_at_index(3, d)
-
-	liste.pointers_print()
-	liste.full_print()
+	print("linkedlist lib for hashtable implementation")
