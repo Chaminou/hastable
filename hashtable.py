@@ -86,13 +86,4 @@ class HashTable :
 		return self.load_factor
 
 if __name__ == '__main__' :
-
-	dico = HashTable(20)
-	for i in range(len(string.ascii_lowercase)) :
-		dico.add_element((string.ascii_lowercase)[i], i)
-
-	print(dico.compute_load_factor())
-
-	dico.resize(10)
-
-	print(dico.compute_load_factor())
+	print("hashtable lib")
