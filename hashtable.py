@@ -1,6 +1,5 @@
 
 from linkedlist import *
-import string
 
 class HashTable :
 	def __init__(self, size=10) :
