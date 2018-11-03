@@ -3,17 +3,38 @@ from linkedlist import *
 import string
 
 class HashTable :
-	def __init__(self, size) :
+	def __init__(self, size=10) :
 		self.size = size
-		self.list = self.init_list()
+		self.list = self.init_list(self.size)
 		self.nb_of_item = 0
 		self.load_factor = 0
 
-	def init_list(self) :
+	def init_list(self, size) :
 		tmp_list = []
-		for i in range(self.size) :
+		for i in range(size) :
 			tmp_list.append(LinkedList())
 		return tmp_list
+
+	def resize(self, new_size) :
+		new_list = self.init_list(new_size)
+		for element in self.elements_generator() :
+			new_element = element.copy()
+			element.copy()
+			key_index = hash(new_element.key)%new_size
+			new_list[key_index].add_to_tail(new_element)
+		self.list = new_list
+		self.size = new_size
+
+	def elements_generator(self) :
+		for i in self.list :
+			for j in i.elements_generator() :
+				yield j
+
+	def elements_list(self) :
+		my_list = []
+		for i in self.list :
+			my_list += i.elements_list()
+		return my_list
 
 	def add_element(self, key, value=None) :
 		element = Element(key, value)
@@ -66,12 +87,12 @@ class HashTable :
 
 if __name__ == '__main__' :
 
-	dico = HashTable(10)
+	dico = HashTable(20)
 	for i in range(len(string.ascii_lowercase)) :
 		dico.add_element((string.ascii_lowercase)[i], i)
 
-	print(dico.does_exist("a"))
-	dico.set_value("a", "ur mom is fat")
-	print(dico.get_value("a"))
+	print(dico.compute_load_factor())
 
+	dico.resize(10)
 
+	print(dico.compute_load_factor())

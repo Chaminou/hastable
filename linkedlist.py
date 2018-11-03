@@ -8,6 +8,9 @@ class Element :
 	def print_element(self) :
 		print("key :", self.key, "value :", self.value, "next :", self.pointer)
 
+	def copy(self) :
+		return Element(self.key, self.value, None)
+
 class LinkedList :
 	def __init__(self, head=None) :
 		self.head = head
@@ -34,7 +37,7 @@ class LinkedList :
 			while current.pointer != None :
 				current = current.pointer
 				my_list.append(current)
-		
+
 		return my_list
 
 	def full_print(self) :
